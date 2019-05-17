@@ -1,22 +1,16 @@
 // Code your solutions in this file
-function fetchBooks(){
-  return fetch()
-}
-function fetchBooks() {
-  return fetch("https://anapioficeandfire.com/api/books")
-    .then(resp => resp.json())
-    .then(json => renderBooks(json))
-}
-
-function renderBooks(json) {
-  const main = document.querySelector('main')
-  json.forEach(book => {
-    const h2 = document.createElement('h2')
-    h2.innerHTML = `<h2>${book.name}</h2>`
-    main.appendChild(h2)
-  })
+function writeCards( namesArray, event ) {
+  let thankYouCards = []
+  for ( let i = 0; i < namesArray.length; i++ ) {
+    thankYouCards.push( `Thank you, ${namesArray[i]}, for the wonderful ${event} gift!` )
+  }
+  return thankYouCards
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-  fetchBooks()
-})
+function countdown( countdown ) {
+  while ( countdown > 0 ) {
+    console.log( countdown );
+    countdown -= 1;
+  }
+  console.log( countdown );
+}
