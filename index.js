@@ -1,14 +1,20 @@
 // Code your solutions in this file
 
-
-const gifts = ["teddy bear", "drone", "doll"];
- 
-function wrapGifts(gifts) {
-  for (let i = 0; i < gifts.length; i++) {
-    console.log(`Wrapped ${gifts[i]} and added a bow!`);
-  }
- 
-  return gifts;
+function fetchBooks() {
+  return fetch("https://anapioficeandfire.com/api/books")
+    .then(resp => resp.json())
+    .then(json => renderBooks(json))
 }
- 
-wrapGifts(gifts);
+
+function renderBooks(json) {
+  const main = document.querySelector('main')
+  json.forEach(book => {
+    const h2 = document.createElement('h2')
+    h2.innerHTML = `<h2>${book.name}</h2>`
+    main.appendChild(h2)
+  })
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  fetchBooks()
+})
